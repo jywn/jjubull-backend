@@ -1,0 +1,3 @@
+rootProject.name = 'jjubull-backend'
+
+include("common", "resource-server", "auth-server")

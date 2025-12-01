@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d66046f8-c191-42aa-859f-c3c10395577c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/resource-server/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/CoreApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/ResourceServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/AuthenticatedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/AuthenticatedUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/config/CustomJwtAuthenticationToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/config/CustomJwtAuthenticationToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/config/DefaultSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/config/DefaultSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/config/PrometheusSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/config/PrometheusSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/config/QuerydslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/config/QuerydslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/config/SolapiConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/config/SolapiConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/dto/response/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/dto/response/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/dto/response/PageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/dto/response/PageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/exception/BusinessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/exception/BusinessException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/exception/ErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/common/exception/SystemException.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/common/exception/SystemException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/coupon/CouponMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/coupon/CouponMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/coupon/domain/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/coupon/domain/Coupon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/coupon/dto/ProfileCouponDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/coupon/dto/ProfileCouponDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/coupon/repository/CouponRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/coupon/repository/CouponRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/coupon/service/CouponQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/coupon/service/CouponQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/manifest/domain/Manifest.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/manifest/domain/Manifest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/controller/MessageLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/controller/MessageLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/domain/MessageLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/domain/MessageLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/domain/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/domain/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/dto/command/MessageCommonDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/dto/command/MessageCommonDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/dto/command/MessageLogDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/dto/command/MessageLogDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/exception/MessageSendFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/exception/MessageSendFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/repository/MessageLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/repository/MessageLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/repository/MessageLogRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/repository/MessageLogRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/repository/MessageLogRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/repository/MessageLogRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/service/MessageCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/service/MessageCommandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/service/MessageLogCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/service/MessageLogCommandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/message/service/MessageLogQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/message/service/MessageLogQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/reservation/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/reservation/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/reservation/domain/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/reservation/domain/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/reservation/dto/command/ReservationSimpleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/reservation/dto/command/ReservationSimpleDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/reservation/repository/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/reservation/repository/ReservationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/reservation/repository/ReservationRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/reservation/repository/ReservationRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/reservation/repository/ReservationRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/reservation/repository/ReservationRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/reservation/service/ReservationQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/reservation/service/ReservationQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/controller/ScheduleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/domain/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/domain/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/domain/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/domain/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/domain/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/domain/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/dto/command/ScheduleMainDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/dto/command/ScheduleMainDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/dto/command/TodayScheduleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/dto/command/TodayScheduleDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/dto/response/ScheduleMainResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/dto/response/ScheduleMainResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/repository/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/repository/ScheduleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/repository/ScheduleRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/repository/ScheduleRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/repository/ScheduleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/repository/ScheduleRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/schedule/service/ScheduleQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/schedule/service/ScheduleQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/ship/domain/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/ship/domain/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/ship/repository/ShipRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/ship/repository/ShipRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/controller/StatisticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/controller/StatisticController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/domain/Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/domain/Statistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/dto/command/MainInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/dto/command/MainInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/dto/command/StatisticDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/dto/command/StatisticDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/dto/command/TodayInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/dto/command/TodayInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/dto/response/AdminMainResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/dto/response/AdminMainResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/repository/StatisticRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/repository/StatisticRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/repository/StatisticRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/repository/StatisticRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/repository/StatisticRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/repository/StatisticRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/statistic/service/StatisticQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/statistic/service/StatisticQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/domain/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/domain/Grade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/domain/Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/domain/Provider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/dto/command/MyProfileDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/dto/command/MyProfileDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/dto/response/MyProfileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/dto/response/MyProfileResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/exception/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/exception/UserNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/repository/UserRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/repository/UserRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/repository/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/repository/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/main/java/com/lamarfishing/core/user/service/UserQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/main/java/com/jjubull/resourceserver/user/service/UserQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resource-server/src/test/java/com/lamarfishing/core/CoreApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/resource-server/src/test/java/com/jjubull/resourceserver/ResourceServerApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/auth-server">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/resource-server">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/common">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/resource-server">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="jjubull-backend" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jywn&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jywn/jjubull.git&quot;,
+    &quot;accountId&quot;: &quot;b0660560-ed66-4313-b3b6-9fe11cc097b2&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="36EO36yabeSvhtMXmVnXRvjXeYe" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build auth-server.executor": "Run",
+    "Gradle.Build jjubull-backend.executor": "Run",
+    "Gradle.Build resource-server.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.AuthServerApplication.executor": "Run",
+    "Spring Boot.CoreApplication (1).executor": "Debug",
+    "Spring Boot.CoreApplication.executor": "Run",
+    "Spring Boot.ResourceServerApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jywon/Desktop/dev/jjubull-backend/build.gradle",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ResourceServerApplication">
+    <configuration name="AuthServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="DB_PASSWORD" value="2239" />
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/jjubull" />
+        <env name="DB_USERNAME" value="root" />
+        <env name="KAKAO_CLIENT_ID" value=" 4669985b9b5311232c052c08ba9aa67d" />
+        <env name="KAKAO_CLIENT_SECRET" value=" ksxiB96VlzlFAWP0wEyg4jsXzxV7pZCs" />
+        <env name="GOOGLE_CLIENT_ID" value="1097725503933-9lpcecr1lipovuhue8k7fcq8evakcksm.apps.googleusercontent.com" />
+        <env name="GOOGLE_CLIENT_SECRET" value="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" />
+      </envs>
+      <module name="jjubull-backend.auth-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jjubul.authserver.AuthServerApplication" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResourceServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="DB_PASSWORD" value="2239" />
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/jjubull" />
+        <env name="DB_USERNAME" value="root" />
+        <env name="SOLAPI_API_KEY" value="NCSGXLC1ULTLP0FG" />
+        <env name="SOLAPI_API_SECRET" value="9SGMIMQNQHIYIYLUEX6SEMEMVRB8WZ9A" />
+        <env name="SOLAPI_SENDER_NUMBER" value="01063461851" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="jjubull-backend.resource-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jjubull.resourceserver.ResourceServerApplication" />
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.AuthServerApplication" />
+      <item itemvalue="Spring Boot.ResourceServerApplication" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d66046f8-c191-42aa-859f-c3c10395577c" name="Changes" comment="" />
+      <created>1764568062887</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764568062887</updated>
+      <workItem from="1764568063991" duration="971000" />
+      <workItem from="1764572546666" duration="371000" />
+      <workItem from="1764572924582" duration="31000" />
+      <workItem from="1764572969462" duration="240000" />
+      <workItem from="1764573221285" duration="115000" />
+      <workItem from="1764573352658" duration="1059000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
