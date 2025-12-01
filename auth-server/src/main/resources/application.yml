@@ -1,0 +1,68 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate
+
+  security:
+    oauth2:
+      authorizationserver:
+        issuer: https://localhost:9000
+
+      client:
+        registration:
+          kakao:
+            client_id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
+            redirect-uri: http://localhost:9000/auth/kakao/callback
+            scope: openid
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_post
+            provider: kakao
+
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: openid
+            provider: google
+            redirect-uri: http://localhost:9000/auth/google/callback
+
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+            issuer-uri: https://kauth.kakao.com
+            jwk-set-uri: https://kauth.kakao.com/.well-known/jwks.json
+
+management:
+  info:
+    java.enabled: true
+    os.enabled: true
+    env.enabled: false
+  endpoint:
+    health.show-components: when_authorized
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,prometheus"
+
+info:
+  app:
+    name: jjubull-auth
+    company: kiwibanana
+
