@@ -1,6 +1,6 @@
 package com.jjubull.resourceserver.schedule.controller;
 
-import com.jjubull.resourceserver.common.dto.response.ApiResponse;
+import com.jjubull.common.dto.response.ApiResponse;
 import com.jjubull.resourceserver.schedule.dto.command.ScheduleMainDto;
 import com.jjubull.resourceserver.schedule.dto.response.ScheduleMainResponse;
 import com.jjubull.resourceserver.schedule.service.ScheduleQueryService;

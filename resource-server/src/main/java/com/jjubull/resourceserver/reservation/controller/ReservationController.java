@@ -1,7 +1,7 @@
 package com.jjubull.resourceserver.reservation.controller;
 
-import com.jjubull.resourceserver.common.dto.response.ApiResponse;
-import com.jjubull.resourceserver.common.dto.response.PageResponse;
+import com.jjubull.common.dto.response.ApiResponse;
+import com.jjubull.common.dto.response.PageResponse;
 import com.jjubull.resourceserver.reservation.dto.command.ReservationSimpleDto;
 import com.jjubull.resourceserver.reservation.service.ReservationQueryService;
 import lombok.RequiredArgsConstructor;

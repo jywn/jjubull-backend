@@ -1,7 +1,7 @@
 package com.jjubull.resourceserver.message.exception;
 
-import com.jjubull.resourceserver.common.exception.ErrorCode;
-import com.jjubull.resourceserver.common.exception.SystemException;
+import com.jjubull.common.exception.ErrorCode;
+import com.jjubull.common.exception.SystemException;
 
 public class MessageSendFailedException extends SystemException {
 

@@ -1,8 +1,8 @@
 package com.jjubull.resourceserver.reservation.domain;
 
+import com.jjubull.common.domain.User;
 import com.jjubull.resourceserver.coupon.domain.Coupon;
 import com.jjubull.resourceserver.schedule.domain.Schedule;
-import com.jjubull.resourceserver.user.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;

@@ -1,9 +1,9 @@
 package com.jjubull.resourceserver.user.service;
 
-import com.jjubull.resourceserver.user.domain.Provider;
-import com.jjubull.resourceserver.user.domain.User;
+import com.jjubull.common.domain.Provider;
+import com.jjubull.common.domain.User;
 import com.jjubull.resourceserver.user.dto.command.MyProfileDto;
-import com.jjubull.resourceserver.user.exception.UserNotFoundException;
+import com.jjubull.common.exception.UserNotFoundException;
 import com.jjubull.resourceserver.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

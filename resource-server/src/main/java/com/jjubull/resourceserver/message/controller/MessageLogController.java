@@ -1,7 +1,7 @@
 package com.jjubull.resourceserver.message.controller;
 
-import com.jjubull.resourceserver.common.dto.response.ApiResponse;
-import com.jjubull.resourceserver.common.dto.response.PageResponse;
+import com.jjubull.common.dto.response.ApiResponse;
+import com.jjubull.common.dto.response.PageResponse;
 import com.jjubull.resourceserver.message.domain.Result;
 import com.jjubull.resourceserver.message.dto.command.MessageLogDto;
 import com.jjubull.resourceserver.message.service.MessageLogQueryService;

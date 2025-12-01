@@ -1,13 +1,13 @@
 package com.jjubull.resourceserver.user.controller;
 
-import com.jjubull.resourceserver.common.dto.response.ApiResponse;
-import com.jjubull.resourceserver.common.dto.response.PageResponse;
+import com.jjubull.common.domain.User;
+import com.jjubull.common.dto.response.ApiResponse;
+import com.jjubull.common.dto.response.PageResponse;
 import com.jjubull.resourceserver.coupon.dto.ProfileCouponDto;
 import com.jjubull.resourceserver.coupon.service.CouponQueryService;
 import com.jjubull.resourceserver.reservation.service.ReservationQueryService;
 import com.jjubull.resourceserver.reservation.dto.command.ReservationSimpleDto;
 import com.jjubull.resourceserver.common.AuthenticatedUser;
-import com.jjubull.resourceserver.user.domain.User;
 import com.jjubull.resourceserver.user.dto.command.MyProfileDto;
 import com.jjubull.resourceserver.user.dto.response.MyProfileResponse;
 import com.jjubull.resourceserver.user.service.UserQueryService;

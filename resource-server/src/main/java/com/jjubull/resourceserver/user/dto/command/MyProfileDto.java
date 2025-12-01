@@ -1,6 +1,6 @@
 package com.jjubull.resourceserver.user.dto.command;
 
-import com.jjubull.resourceserver.user.domain.Grade;
+import com.jjubull.common.domain.Grade;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

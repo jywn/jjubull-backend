@@ -1,6 +1,6 @@
 package com.jjubull.resourceserver.coupon.domain;
 
-import com.jjubull.resourceserver.user.domain.User;
+import com.jjubull.common.domain.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

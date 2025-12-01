@@ -1,7 +1,7 @@
 package com.jjubull.resourceserver.common;
 
-import com.jjubull.resourceserver.user.domain.Grade;
-import com.jjubull.resourceserver.user.domain.Provider;
+import com.jjubull.common.domain.Grade;
+import com.jjubull.common.domain.Provider;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.oauth2.jwt.Jwt;

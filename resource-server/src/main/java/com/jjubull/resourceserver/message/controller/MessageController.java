@@ -1,6 +1,6 @@
 package com.jjubull.resourceserver.message.controller;
 
-import com.jjubull.resourceserver.common.dto.response.ApiResponse;
+import com.jjubull.common.dto.response.ApiResponse;
 import com.jjubull.resourceserver.message.service.MessageCommandService;
 import com.jjubull.resourceserver.schedule.domain.Status;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.jjubull.resourceserver.user.repository;
 
-import com.jjubull.resourceserver.user.domain.Provider;
-import com.jjubull.resourceserver.user.domain.User;
+import com.jjubull.common.domain.Provider;
+import com.jjubull.common.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package com.jjubull.resourceserver.statistic.controller;
 
-import com.jjubull.resourceserver.common.dto.response.ApiResponse;
+import com.jjubull.common.dto.response.ApiResponse;
 import com.jjubull.resourceserver.statistic.dto.response.AdminMainResponse;
 import com.jjubull.resourceserver.statistic.service.AdminService;
 import com.jjubull.resourceserver.statistic.dto.command.MainInfoDto;
