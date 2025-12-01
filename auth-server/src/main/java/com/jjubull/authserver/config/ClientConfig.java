@@ -18,8 +18,8 @@ public class ClientConfig {
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient client = RegisteredClient
                 .withId(UUID.randomUUID().toString())
-                .clientId("jjubul-web-client")
-                .clientName("jjubul-web-client")
+                .clientId("jjubull-web-client")
+                .clientName("jjubull-web-client")
                 .clientIdIssuedAt(Instant.now())
                 .clientSecretExpiresAt(Instant.MAX)
                 .clientSecret("1234")
