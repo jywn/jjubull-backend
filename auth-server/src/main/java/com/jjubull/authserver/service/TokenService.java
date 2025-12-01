@@ -4,8 +4,10 @@ import com.jjubull.authserver.domain.OAuth2User;
 import com.jjubull.authserver.domain.RefreshToken;
 import com.jjubull.authserver.dto.RefreshTokenDto;
 import com.jjubull.authserver.repository.RefreshTokenRepository;
-import com.jjubull.authserver.util.CookieUtil;
-import com.jjubull.authserver.util.JwtUtil;
+import com.jjubull.authserver.util.CookieBuilder;
+import com.jjubull.authserver.util.JwkUtil;
+import com.jjubull.authserver.util.JwtBuilder;
+import com.jjubull.authserver.util.TokenVerifier;
 import com.nimbusds.jose.jwk.*;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
@@ -25,15 +27,12 @@ public class TokenService {
 
     private final RefreshTokenRepository refreshTokenRepository;
     private final JWKSource<SecurityContext> jwkSource;
-    private final JwtUtil jwtUtil;
     private final Long refreshTokenMaxAge = 60L * 60 * 24 * 14;
+    private final JwkUtil jwkUtil;
 
     public String buildMyAccessToken(OAuth2User user) {
         try {
-            JWK jwk = jwkSource.get(new JWKSelector(new JWKMatcher.Builder().build()), null).getFirst();
-            RSAKey rsaKey = jwk.toRSAKey();
-
-            return jwtUtil.buildMyToken(rsaKey, user.getSub(), user.getProvider().toString(), user.getGrade().toString());
+            return JwtBuilder.buildMyToken(jwkUtil.getMyRsaKey(), user.getSub(), user.getProvider().toString(), user.getGrade().toString());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -46,7 +45,7 @@ public class TokenService {
         Instant expiresAt = Instant.now().plusSeconds(60L * 60 * 24 * 14);
 
         RefreshToken refreshToken = RefreshToken.create(userId, token, expiresAt);
-        ResponseCookie cookie = CookieUtil.buildCookie("refresh_token", refreshToken.getValue(), refreshTokenMaxAge);
+        ResponseCookie cookie = CookieBuilder.buildCookie("refresh_token", refreshToken.getValue(), refreshTokenMaxAge);
 
         refreshTokenRepository.save(refreshToken);
 
@@ -72,7 +71,7 @@ public class TokenService {
 
         refreshTokenRepository.deleteByValue(token);
 
-        ResponseCookie cookie = CookieUtil.buildCookie("refresh_token", "", 0L);
+        ResponseCookie cookie = CookieBuilder.buildCookie("refresh_token", "", 0L);
 
         return RefreshTokenDto.builder()
                 .refreshToken("")

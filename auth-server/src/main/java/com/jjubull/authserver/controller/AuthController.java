@@ -24,31 +24,6 @@ public class AuthController {
     private final TokenService tokenService;
     private final OAuth2UserService userService;
 
-    @PostMapping("/token/refresh")
-    public ResponseEntity<ApiResponse<String>> refreshToken(@CookieValue("refresh_token") String refreshToken) {
-
-        Long userId = tokenService.verifyRefreshToken(refreshToken);
-        OAuth2User user = userService.getUser(userId);
-        tokenService.deleteRefreshToken(refreshToken);
-
-        RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
-        String accessToken = tokenService.buildMyAccessToken(user);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
-                .body(ApiResponse.success("리프레시 토큰을 사용하여 액세스 토큰을 발급하였습니다."));
-    }
-
-    @PostMapping("/logout")
-    public ResponseEntity<ApiResponse<String>> logout(@CookieValue("refresh_token") String refreshToken) {
-
-        RefreshTokenDto refreshTokenDto = tokenService.deleteRefreshToken(refreshToken);
-
-        return ResponseEntity.ok()
-                .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
-                .body(ApiResponse.success("로그아웃에 성공하였습니다."));
-    }
-
     @GetMapping("/{provider}/start")
     public ResponseEntity<Void> authStart(@PathVariable String provider) {
 

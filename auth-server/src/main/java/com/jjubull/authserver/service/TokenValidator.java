@@ -1,10 +1,11 @@
 package com.jjubull.authserver.service;
 
 
+import com.jjubull.authserver.util.JwkUtil;
 import com.jjubull.common.domain.Provider;
 import com.jjubull.authserver.dto.ValidatedMyTokenDto;
 import com.jjubull.authserver.exception.KeyException;
-import com.jjubull.authserver.util.JwtUtil;
+import com.jjubull.authserver.util.TokenVerifier;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.crypto.RSASSAVerifier;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -22,22 +23,22 @@ import java.text.ParseException;
 @RequiredArgsConstructor
 public class TokenValidator {
 
-        private final JwtUtil jwtUtil;
-        private final ClientRegistrationRepository clientRegistrationRepository;
+    private final ClientRegistrationRepository clientRegistrationRepository;
+    private final JwkUtil jwkUtil;
 
-        public String validateOpToken(String token, String provider) {
+    public String validateOpToken(String token, String provider) {
             try {
                 SignedJWT signedJWT = SignedJWT.parse(token);
 
-                RSAKey rsaKey = jwtUtil.getOpRsaKey(
+                RSAKey rsaKey = jwkUtil.getOpRsaKey(
                         clientRegistrationRepository.findByRegistrationId(provider).getProviderDetails().getJwkSetUri(),
                         signedJWT.getHeader().getKeyID()
                 );
 
-                jwtUtil.verifyToken(signedJWT, new RSASSAVerifier(rsaKey.toRSAPublicKey()));
+                TokenVerifier.verifyToken(signedJWT, new RSASSAVerifier(rsaKey.toRSAPublicKey()));
 
                 ClientRegistration clientRegistration = clientRegistrationRepository.findByRegistrationId(provider);
-                jwtUtil.verifyOpToken(clientRegistration.getProviderDetails().getIssuerUri(), clientRegistration.getClientId(), signedJWT);
+                TokenVerifier.verifyOpToken(clientRegistration.getProviderDetails().getIssuerUri(), clientRegistration.getClientId(), signedJWT);
 
                 return signedJWT.getJWTClaimsSet().getSubject();
             } catch (ParseException | JOSEException | IOException e) {
@@ -48,8 +49,8 @@ public class TokenValidator {
         public ValidatedMyTokenDto validateMyToken(String jwt) {
             try {
                 SignedJWT signedJWT = SignedJWT.parse(jwt);
-                RSAKey rsaKey = jwtUtil.getMyRsaKey(signedJWT.getHeader().getKeyID());
-                jwtUtil.verifyToken(signedJWT, new RSASSAVerifier(rsaKey.toRSAPublicKey()));
+                RSAKey rsaKey = jwkUtil.getMyRsaKey(signedJWT.getHeader().getKeyID());
+                TokenVerifier.verifyToken(signedJWT, new RSASSAVerifier(rsaKey.toRSAPublicKey()));
 
                 JWTClaimsSet jwtClaimsSet = signedJWT.getJWTClaimsSet();
 

@@ -1,7 +1,13 @@
 package com.jjubull.authserver.exception;
 
+import com.jjubull.authserver.util.JwkUtil;
+import com.jjubull.authserver.util.JwtBuilder;
+import com.jjubull.authserver.util.TokenVerifier;
+import com.jjubull.common.domain.Grade;
 import com.jjubull.common.domain.Provider;
 import com.jjubull.common.dto.response.ApiResponse;
+import com.jjubull.common.exception.BusinessException;
+import com.jjubull.common.exception.SystemException;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
@@ -12,18 +18,16 @@ import com.nimbusds.jose.jwk.JWKSelector;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import com.nimbusds.jwt.JWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.io.IOException;
 import java.util.Date;
 
 @Slf4j
@@ -31,69 +35,48 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
+    private final JwkUtil jwkUtil;
     private final JWKSource<SecurityContext> jwkSource;
 
     @ExceptionHandler(NewUserException.class)
-    public void handleUserNotFoundException(NewUserException e, HttpServletResponse response) throws IOException, JOSEException {
+    public ResponseEntity<ApiResponse<String>> handleNewUserException(NewUserException e) {
 
-        JWK jwk = jwkSource.get(new JWKSelector(new JWKMatcher.Builder().build()), null).getFirst();
+        String jwt = JwtBuilder.buildMyToken(
+                jwkUtil.getMyRsaKey(), e.getSub(), e.getProvider().toString(), Grade.GUEST.getValue());
 
-        RSAKey rsaKey = jwk.toRSAKey();
-
-        RSASSASigner signer = new RSASSASigner(rsaKey);
-
-        JWTClaimsSet claims = buildJwt(e.getProvider(), e.getSub());
-
-        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.RS256)
-                .keyID(rsaKey.getKeyID())
-                .build();
-
-        SignedJWT jwt = new SignedJWT(header, claims);
-
-        jwt.sign(signer);
-
-        String redirectUrl = buildRedirectUrl(jwt);
-
-        response.sendRedirect(redirectUrl);
-    }
-
-    private static String buildRedirectUrl(SignedJWT jwt) {
-        String redirectUrl = UriComponentsBuilder
-                .fromUriString("http://localhost:9000/signup")
-                .queryParam("jwt", jwt.serialize())
-                .build()
-                .toUriString();
-        return redirectUrl;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ApiResponse.failure("회원가입이 필요합니다.", jwt));
     }
 
     @ExceptionHandler(RefreshTokenExpiredException.class)
-    public ResponseEntity<ApiResponse<String>> handleRefreshTokenExpiredException(RefreshTokenExpiredException ex) {
+    public ResponseEntity<ApiResponse<String>> handleRefreshTokenExpiredException(RefreshTokenExpiredException e) {
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ApiResponse.failure("리프레시 토큰이 만료되었습니다.", "REFRESH_TOKEN_EXPIRED"));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ApiResponse.failure(e.getMessage(), null));
     }
 
     @ExceptionHandler(AccessTokenExpiredException.class)
-    public ResponseEntity<ApiResponse<String>> handleAccessTokenExpiredException(AccessTokenExpiredException ex) {
+    public ResponseEntity<ApiResponse<String>> handleAccessTokenExpiredException(AccessTokenExpiredException e) {
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ApiResponse.failure("액세스 토큰이 만료되었습니다.", "ACCESS_TOKEN_EXPIRED"));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ApiResponse.failure(e.getMessage(), null));
     }
 
-    private static JWTClaimsSet buildJwt(Provider provider, String sub) {
-        return new JWTClaimsSet.Builder()
-                .subject(sub)
-                .issuer("jjubul-auth-server")
-                .audience("jjubul-auth-server")
-                .issueTime(new Date())
-                .expirationTime(new Date(new Date().getTime() + 10 * 60 * 1000))
-                .claim("provider", provider)
-                .build();
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ApiResponse<Void>> businessExceptionHandler(BusinessException e) {
+
+        log.warn("Business error occurred: code={}, message={}", e.getCode(), e.getMessage());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ApiResponse.failure(e.getMessage(), null));
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse<?>> handleException(Exception e) {
-        log.error("Unhandled Exception: {}", e.getMessage(), e);
-        return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .build();
+    @ExceptionHandler(SystemException.class)
+    public ResponseEntity<ApiResponse<Void>> systemExceptionHandler(SystemException e) {
+
+        log.error("System error occurred", e);
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ApiResponse.failure(e.getMessage(), null));
     }
 }

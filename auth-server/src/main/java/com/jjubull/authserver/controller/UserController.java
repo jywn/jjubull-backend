@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,15 @@ public class UserController {
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + myAccessToken)
                 .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
                 .body(ApiResponse.success("회원가입을 성공하였습니다."));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<ApiResponse<String>> logout(@CookieValue("refresh_token") String refreshToken) {
+
+        RefreshTokenDto refreshTokenDto = tokenService.deleteRefreshToken(refreshToken);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
+                .body(ApiResponse.success("로그아웃에 성공하였습니다."));
     }
 }
