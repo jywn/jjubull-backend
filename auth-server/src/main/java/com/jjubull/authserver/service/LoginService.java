@@ -47,7 +47,7 @@ public class LoginService {
                 .block();
     }
 
-    private static MultiValueMap<String, String> buildRequestBody(String code, ClientRegistration clientRegistration) {
+    private MultiValueMap<String, String> buildRequestBody(String code, ClientRegistration clientRegistration) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
         params.add("client_id", clientRegistration.getClientId());
