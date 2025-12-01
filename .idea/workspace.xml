@@ -5,55 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d66046f8-c191-42aa-859f-c3c10395577c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/dto/response/PageResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/exception/BusinessException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/exception/ErrorCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/exception/SystemException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/AuthServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/AuthServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/authorization/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/domain/Grade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/authorization/OAuth2User.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/domain/OAuth2User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/authorization/Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/domain/Provider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/authorization/RefreshToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/domain/RefreshToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/authorization/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/config/AuthorizationServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/AuthorizationServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/config/ClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/ClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/config/DefaultSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/DefaultSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/config/KeyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/KeyConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/WebClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/controller/JwksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/JwksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/dto/NewLocalUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/dto/NewLocalUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/dto/NewUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/dto/NewUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/dto/OAuth2InfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/dto/OAuth2InfoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/dto/RefreshTokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/dto/RefreshTokenDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/dto/ValidatedMyTokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/dto/ValidatedMyTokenDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/dto/response/AccessTokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/dto/response/AccessTokenResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/dto/response/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/jjubull/common/dto/response/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/AccessTokenExpiredException.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/AccessTokenExpiredException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/BusinessException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/ErrorCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/KeyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/KeyException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/RefreshTokenExpiredException.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/RefreshTokenExpiredException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/RefreshTokenNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/RefreshTokenNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/UserDuplicatedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/UserDuplicatedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/exception/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/NewUserException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/repository/OAuth2UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/repository/OAuth2UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/repository/RefreshTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/repository/RefreshTokenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/service/CookieUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/util/CookieUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/service/DummyUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/service/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/util/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/service/OAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/service/OAuth2UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/service/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubul/authserver/service/TokenValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/service/TokenValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/test/java/com/jjubul/authserver/AuthServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/test/java/com/jjubull/authserver/AuthServerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/common/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/ClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/ClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/GlobalExceptionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +128,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ResourceServerApplication">
+  <component name="RunManager" selected="Spring Boot.AuthServerApplication">
     <configuration name="jjubull-backend:resource-server [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />

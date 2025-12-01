@@ -27,17 +27,12 @@ public class AuthController {
     @PostMapping("/token/refresh")
     public ResponseEntity<ApiResponse<String>> refreshToken(@CookieValue("refresh_token") String refreshToken) {
 
-        log.info("refreshToken: {}", refreshToken);
         Long userId = tokenService.verifyRefreshToken(refreshToken);
-        log.info("userId: {}", userId);
         OAuth2User user = userService.getUser(userId);
-        log.info("user: {}", user);
         tokenService.deleteRefreshToken(refreshToken);
 
         RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
-        log.info("refreshTokenDto: {}", refreshTokenDto);
         String accessToken = tokenService.buildMyAccessToken(user);
-        log.info("accessToken: {}", accessToken);
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                 .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
@@ -65,31 +60,28 @@ public class AuthController {
     }
 
     @GetMapping("/{provider}/callback")
-    public ResponseEntity<Void> callback(@RequestParam String code, @PathVariable String provider) {
+    public ResponseEntity<ApiResponse<String>> callback(@RequestParam String code, @PathVariable String provider) {
 
         String idToken = loginService.callBack(code, provider);
 
         OAuth2User user = userService.getUserByToken(idToken, provider);
 
+        String myAccessToken = tokenService.buildMyAccessToken(user);
+
         RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
 
-        String redirectUrl = "https://jjubull.vercel.app/home";
-
-        return ResponseEntity.status(HttpStatus.FOUND)
+        return ResponseEntity.ok()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + myAccessToken)
                 .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
-                .header(HttpHeaders.LOCATION, redirectUrl)
-                .build();
+                .body(ApiResponse.success("사용자 로그인에 성공하였습니다."));
     }
 
     @GetMapping("/admin")
     public ResponseEntity<ApiResponse<Void>> admin() {
 
         OAuth2User user = userService.getUser("01055839181", Provider.LOCAL);
-        log.info("user: {}", user.getName());
         RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
-        log.info("refreshTokenDto: {}", refreshTokenDto.getCookie().toString());
         String myAccessToken = tokenService.buildMyAccessToken(user);
-        log.info("myAccessToken: {}", myAccessToken.toString());
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
