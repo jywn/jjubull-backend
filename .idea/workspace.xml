@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d66046f8-c191-42aa-859f-c3c10395577c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/AuthorizationServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/AuthorizationServerConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/ClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/ClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/DefaultSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/config/DefaultSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-server/src/main/java/com/jjubull/authserver/exception/GlobalExceptionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +67,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

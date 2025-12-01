@@ -75,17 +75,4 @@ public class AuthController {
                 .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
                 .body(ApiResponse.success("사용자 로그인에 성공하였습니다."));
     }
-
-    @GetMapping("/admin")
-    public ResponseEntity<ApiResponse<Void>> admin() {
-
-        OAuth2User user = userService.getUser("01055839181", Provider.LOCAL);
-        RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
-        String myAccessToken = tokenService.buildMyAccessToken(user);
-
-        return ResponseEntity.ok()
-                .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + myAccessToken)
-                .body(ApiResponse.success("관리자 로그인에 성공하였습니다."));
-    }
 }

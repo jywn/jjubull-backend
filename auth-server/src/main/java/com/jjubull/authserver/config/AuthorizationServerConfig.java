@@ -27,6 +27,7 @@ public class AuthorizationServerConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request -> request
                 .anyRequest().permitAll());
+        
         return http.build();
     }
 
