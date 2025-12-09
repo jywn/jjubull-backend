@@ -1,3 +1,7 @@
+server:
+  forward-headers-strategy: native
+  port: 8080
+
 spring:
   datasource:
     url: ${DB_URL}
@@ -11,7 +15,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: https://jjubul-auth.duckdns.org/oauth2/jwks
+          jwk-set-uri: https://jjubull-auth.duckdns.org/oauth2/jwks
           
 logging:
   level:
