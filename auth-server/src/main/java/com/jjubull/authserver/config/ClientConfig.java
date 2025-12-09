@@ -26,8 +26,8 @@ public class ClientConfig {
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-                .redirectUri("https://jjubul-auth.duckdns.org/login/oauth2/code/jjubul-web-client")
-                .redirectUri("https://jjubul-auth.duckdns.org/auth")
+                .redirectUri("https://jjubull-auth.duckdns.org/login/oauth2/code/jjubull-web-client")
+                .redirectUri("https://jjubull-auth.duckdns.org/auth")
                 .scope("openid")
                 .build();
 

@@ -2,7 +2,6 @@ server:
   forward-headers-strategy: native
   port: 9000
 
-
 logging:
   level:
     org.springframework.security: DEBUG
@@ -13,6 +12,9 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  flyway:
+    enabled: false
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
