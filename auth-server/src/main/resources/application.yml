@@ -31,7 +31,7 @@ spring:
           kakao:
             client_id: ${KAKAO_CLIENT_ID}
             client-secret: ${KAKAO_CLIENT_SECRET}
-            redirect-uri: http://jjubull-auth.duckdns.org/auth/kakao/callback
+            redirect-uri: https://jjubull-auth.duckdns.org/auth/kakao/callback
             scope: openid
             authorization-grant-type: authorization_code
             client-authentication-method: client_secret_post
@@ -42,7 +42,7 @@ spring:
             client-secret: ${GOOGLE_CLIENT_SECRET}
             scope: openid
             provider: google
-            redirect-uri: http://jjubull-auth.duckdns.org/auth/google/callback
+            redirect-uri: https://jjubull-auth.duckdns.org/auth/google/callback
 
         provider:
           kakao:
