@@ -66,6 +66,5 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ~/jjubull
-            git pull origin main
             chmod +x deploy.sh
             ./deploy.sh ${{ steps.vars.outputs.TAG }}
