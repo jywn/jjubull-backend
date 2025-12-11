@@ -1,3 +1,5 @@
+SET SESSION cte_max_recursion_depth = 500000;
+
 -- user 20만건
 INSERT INTO users (
     user_sub,
