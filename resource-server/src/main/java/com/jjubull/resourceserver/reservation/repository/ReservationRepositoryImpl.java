@@ -39,7 +39,7 @@ public class ReservationRepositoryImpl implements ReservationRepositoryCustom {
                         QReservation.reservation.schedule.departure))
                 .from(QReservation.reservation)
                 .leftJoin(QSchedule.schedule).on(QSchedule.schedule.id.eq(QReservation.reservation.schedule.id))
-                .leftJoin(QShip.ship).on(QShip.ship.id.eq(QReservation.reservation.schedule.id))
+                .leftJoin(QShip.ship).on(QShip.ship.id.eq(QReservation.reservation.schedule.ship.id))
                 .where(userIdEq(userId), processEq(process), fromGoe(from), toLoe(to), shipIdEq(shipId))
                 .orderBy(QReservation.reservation.schedule.departure.desc())
                 .offset(pageable.getOffset())

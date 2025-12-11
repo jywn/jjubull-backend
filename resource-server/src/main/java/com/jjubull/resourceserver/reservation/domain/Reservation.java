@@ -47,22 +47,17 @@ public class Reservation {
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "coupon_id")
-    private Coupon coupon;
-
     @Builder
-    private Reservation(int headCount, String request, int totalPrice, Process process, User user, Schedule schedule, Coupon coupon) {
+    private Reservation(int headCount, String request, int totalPrice, Process process, User user, Schedule schedule) {
         this.headCount = headCount;
         this.request = request;
         this.totalPrice = totalPrice;
         this.process = process;
         this.user = user;
         this.schedule = schedule;
-        this.coupon = coupon;
     }
 
-    public static Reservation create(int headCount, String request, int totalPrice, Process process, User user, Schedule schedule, Coupon coupon) {
+    public static Reservation create(int headCount, String request, int totalPrice, Process process, User user, Schedule schedule) {
         return Reservation.builder()
                 .headCount(headCount)
                 .request(request)
@@ -70,7 +65,6 @@ public class Reservation {
                 .process(process)
                 .user(user)
                 .schedule(schedule)
-                .coupon(coupon)
                 .build();
     }
 }
