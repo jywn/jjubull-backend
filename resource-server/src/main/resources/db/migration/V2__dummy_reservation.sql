@@ -1,10 +1,3 @@
-WITH RECURSIVE seq AS (
-    SELECT 1 AS n
-    UNION ALL
-    SELECT n + 1
-    FROM seq
-    WHERE n < 300000
-)
 INSERT INTO reservations (
     reservation_head_count,
     reservation_request,
@@ -13,7 +6,14 @@ INSERT INTO reservations (
     user_id,
     schedule_id
 )
-SELECT
+WITH RECURSIVE seq AS (
+    SELECT 1 AS n
+    UNION ALL
+    SELECT n + 1
+    FROM seq
+    WHERE n < 300000
+)
+SELECT /*+ SET_VAR(cte_max_recursion_depth = 300000) */
     1 AS reservation_head_count,
     CONCAT('부하 테스트 예약 ', n) AS reservation_request,
     100000 AS reservation_total_price,
