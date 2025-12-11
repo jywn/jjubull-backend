@@ -16,11 +16,6 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://jjubull-auth.duckdns.org/oauth2/jwks
-          
-logging:
-  level:
-    org:
-      hibernate.orm.jdbc.bind: trace
 
 # Solapi SMS 설정
 solapi:
