@@ -32,6 +32,7 @@ public class DefaultSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
+                        .anyRequest().permitAll() // 부하테스트 용도
                         .requestMatchers("/schedules/*/reservation/normal", "/schedules/main", "schedules/sch*").permitAll()
                         .requestMatchers(HttpMethod.POST, "/schedules/*/reservation").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
