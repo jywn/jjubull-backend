@@ -1,9 +1,5 @@
 package com.jjubull.resourceserver.reservation.repository;
 
-import com.jjubull.common.domain.QUser;
-import com.jjubull.resourceserver.reservation.domain.QReservation;
-import com.jjubull.resourceserver.schedule.domain.QSchedule;
-import com.jjubull.resourceserver.ship.domain.QShip;
 import com.jjubull.resourceserver.reservation.dto.command.ReservationSimpleDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -18,7 +14,10 @@ import com.jjubull.resourceserver.reservation.domain.Reservation.Process;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.jjubull.common.domain.QUser.*;
 import static com.jjubull.resourceserver.reservation.domain.QReservation.*;
+import static com.jjubull.resourceserver.schedule.domain.QSchedule.*;
+import static com.jjubull.resourceserver.ship.domain.QShip.*;
 
 @RequiredArgsConstructor
 public class ReservationRepositoryImpl implements ReservationRepositoryCustom {
@@ -37,23 +36,22 @@ public class ReservationRepositoryImpl implements ReservationRepositoryCustom {
                 .select(Projections.constructor(ReservationSimpleDto.class,
                         reservation.totalPrice, reservation.process,
                         reservation.headCount, reservation.request,
-                        reservation.user.username,
-                        reservation.schedule.ship.fishType,
-                        reservation.schedule.departure))
-                .from(reservation)
-                .join(reservation.user, QUser.user)
-                .join(reservation.schedule, QSchedule.schedule)
-                .join(QSchedule.schedule.ship, QShip.ship)
-                .where(userIdEq(userId), processEq(process), fromGoe(from), toLoe(to), shipIdEq(shipId))
-                .orderBy(reservation.schedule.departure.desc())
+                        user.username, ship.fishType, schedule.departure))
+                .from(schedule)
+                .join(schedule.ship, ship)
+                .join(reservation).on(reservation.schedule.eq(schedule))
+                .join(reservation.user, user)
+                .where(shipIdEq(shipId), fromGoe(from), toLoe(to), userIdEq(userId), processEq(process))
+                .orderBy(schedule.departure.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         JPAQuery<Long> countQuery = queryFactory
                 .select(reservation.count())
-                .from(reservation)
-                .where(userIdEq(userId), processEq(process), fromGoe(from), toLoe(to), shipIdEq(shipId));
+                .from(schedule)
+                .join(reservation).on(reservation.schedule.eq(schedule))
+                .where(shipIdEq(shipId), fromGoe(from), toLoe(to), userIdEq(userId), processEq(process));
 
         return PageableExecutionUtils.getPage(mainQuery, pageable, countQuery::fetchOne);
     }
@@ -67,15 +65,15 @@ public class ReservationRepositoryImpl implements ReservationRepositoryCustom {
     }
 
     private BooleanExpression fromGoe(LocalDateTime from) {
-        return from == null ? null : reservation.schedule.departure.goe(from);
+        return from == null ? null : schedule.departure.goe(from);
     }
 
     private BooleanExpression toLoe(LocalDateTime to) {
-        return to == null ? null : reservation.schedule.departure.loe(to);
+        return to == null ? null : schedule.departure.loe(to);
     }
 
     private BooleanExpression shipIdEq(Long shipId) {
-        return shipId == null ? null : reservation.schedule.ship.id.eq(shipId);
+        return shipId == null ? null : schedule.ship.id.eq(shipId);
     }
 
 }
