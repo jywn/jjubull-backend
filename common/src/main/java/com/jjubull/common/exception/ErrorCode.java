@@ -23,7 +23,11 @@ public enum ErrorCode {
     ACCESS_TOKEN_EXPIRED("A002", "액세스 토큰 만료"),
 
     /** Key 예외 **/
-    KEY("K001", "잘못된 키 사용");
+    KEY("K001", "잘못된 키 사용"),
+
+    /** Schedule 예외 **/
+    NO_POSSIBLE_SEAT("S001", "잔여 좌석이 없습니다.");
+
     private final String code;
     private final String message;
 

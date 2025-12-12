@@ -1,5 +1,6 @@
 package com.jjubull.resourceserver.schedule.domain;
 
+import com.jjubull.resourceserver.schedule.exception.NoPossibleSeatException;
 import com.jjubull.resourceserver.ship.domain.Ship;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -59,5 +60,16 @@ public class Schedule {
                 .type(type)
                 .ship(ship)
                 .build();
+    }
+
+    public void isReservationPossible(int headCount) {
+        if (getShip().getMaxHeadCount() < getCurrentHeadCount() + headCount) {
+            throw new NoPossibleSeatException();
+        }
+    }
+
+    public void reserve(int headCount) {
+        isReservationPossible(headCount);
+        this.currentHeadCount += headCount;
     }
 }

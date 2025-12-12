@@ -58,6 +58,7 @@ public class Reservation {
     }
 
     public static Reservation create(int headCount, String request, int totalPrice, Process process, User user, Schedule schedule) {
+
         return Reservation.builder()
                 .headCount(headCount)
                 .request(request)
