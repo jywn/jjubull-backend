@@ -34,10 +34,10 @@ public class ReservationController {
     }
 
     @PostMapping("/schedules/{scheduleId}")
-    public ResponseEntity<ApiResponse<Long>> reserve(@PathVariable("scheduleId") Long scheduleId, @RequestBody ReservationRequest reservationRequest) {
+    public ResponseEntity<ApiResponse<Integer>> reserve(@PathVariable("scheduleId") Long scheduleId, @RequestBody ReservationRequest reservationRequest) {
 
         // 경쟁 상태의 충돌 확인을 위해 각자 예약했다고 생각하는 번호를 반환한다.
-        Long id = reservationCommandService.reserve(scheduleId, reservationRequest.getUserId(), reservationRequest.getHeadCount(), reservationRequest.getRequest());
+        int id = reservationCommandService.reserve(scheduleId, reservationRequest.getUserId(), reservationRequest.getHeadCount(), reservationRequest.getRequest());
 
         return ResponseEntity.ok(ApiResponse.success("예약에 성공하였습니다.", id));
     }
