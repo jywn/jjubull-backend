@@ -9,6 +9,10 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+    hikari:
+      maximum-pool-size: 16
+      minimum-idle: 16
+
   security:
     oauth2:
       resourceserver:
