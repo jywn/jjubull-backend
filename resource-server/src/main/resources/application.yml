@@ -3,7 +3,7 @@ server:
   port: 8080
   tomcat:
     threads:
-      max: 32
+      max: 64
 
 spring:
   datasource:
@@ -13,8 +13,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
     hikari:
-      maximum-pool-size: 16
-      minimum-idle: 16
+      maximum-pool-size: 32
+      minimum-idle: 32
 
   security:
     oauth2:
