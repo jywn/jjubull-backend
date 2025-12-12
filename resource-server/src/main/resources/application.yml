@@ -1,6 +1,9 @@
 server:
   forward-headers-strategy: native
   port: 8080
+  tomcat:
+    threads:
+      max: 32
 
 spring:
   datasource:
