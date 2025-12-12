@@ -25,7 +25,7 @@ public class ReservationCommandService {
     private final ScheduleRepository scheduleRepository;
     private final ReservationRepository reservationRepository;
 
-    public void reserve(Long scheduleId, Long userId, int headCount, String request) {
+    public Long reserve(Long scheduleId, Long userId, int headCount, String request) {
 
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(EntityNotFoundException::new);
         schedule.reserve(headCount);
@@ -35,6 +35,6 @@ public class ReservationCommandService {
         Reservation reservation = Reservation.create(headCount, request, ship.getPrice() * headCount,
                 Reservation.Process.RESERVE_COMPLETED, user, schedule);
 
-        reservationRepository.save(reservation);
+        return reservationRepository.save(reservation).getId();
     }
 }
