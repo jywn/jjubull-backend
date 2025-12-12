@@ -21,9 +21,9 @@ public class ReservationController {
     private final ReservationQueryService reservationQueryService;
 
     @GetMapping
-    public ResponseEntity<ApiResponse<PageResponse<ReservationSimpleDto>>> getReservations(Process process, LocalDateTime from, LocalDateTime to, Long shipId, Pageable pageable) {
+    public ResponseEntity<ApiResponse<PageResponse<ReservationSimpleDto>>> getReservations(Process process, LocalDateTime from, LocalDateTime to, Long shipId, Long userId, Pageable pageable) {
 
-        Page<ReservationSimpleDto> pageResult = reservationQueryService.getReservations(process, from, to, shipId, pageable);
+        Page<ReservationSimpleDto> pageResult = reservationQueryService.getReservations(process, from, to, shipId, userId, pageable);
 
         return ResponseEntity.ok(ApiResponse.success("예약 목록 조회에 성공하였습니다.", PageResponse.from(pageResult)));
     }

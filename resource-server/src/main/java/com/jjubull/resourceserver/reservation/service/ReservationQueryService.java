@@ -18,11 +18,11 @@ public class ReservationQueryService {
     private final ReservationRepository reservationRepository;
 
     public Page<ReservationSimpleDto> getMyReservations(Long userId, Process process, Pageable pageable) {
-        return reservationRepository.getReservations(userId, process, null, null, null, pageable);
+        return reservationRepository.getReservations(process, null, null, null, userId, pageable);
     }
 
     @PreAuthorize("hasAuthority('GRADE_ADMIN')")
-    public Page<ReservationSimpleDto> getReservations(Process process, LocalDateTime from, LocalDateTime to, Long shipId, Pageable pageable) {
-        return reservationRepository.getReservations(null, process, from, to, shipId, pageable);
+    public Page<ReservationSimpleDto> getReservations(Process process, LocalDateTime from, LocalDateTime to, Long shipId, Long userId, Pageable pageable) {
+        return reservationRepository.getReservations(process, from, to, shipId, userId, pageable);
     }
 }

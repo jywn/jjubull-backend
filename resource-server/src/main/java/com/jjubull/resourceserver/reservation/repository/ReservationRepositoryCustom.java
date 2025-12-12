@@ -8,5 +8,5 @@ import com.jjubull.resourceserver.reservation.domain.Reservation.Process;
 import java.time.LocalDateTime;
 
 public interface ReservationRepositoryCustom {
-    Page<ReservationSimpleDto> getReservations(Long userId, Process process, LocalDateTime from, LocalDateTime to, Long shipId, Pageable pageable);
+    Page<ReservationSimpleDto> getReservations(Process process, LocalDateTime from, LocalDateTime to, Long shipId, Long userId, Pageable pageable);
 }

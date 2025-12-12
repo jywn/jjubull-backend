@@ -29,9 +29,9 @@ public class ReservationRepositoryImpl implements ReservationRepositoryCustom {
      */
     // 예약자 이름, 인원, 메모,
     @Override
-    public Page<ReservationSimpleDto> getReservations(Long userId, Process process,
+    public Page<ReservationSimpleDto> getReservations(Process process,
                                                       LocalDateTime from, LocalDateTime to,
-                                                      Long shipId, Pageable pageable) {
+                                                      Long shipId, Long userId, Pageable pageable) {
         List<ReservationSimpleDto> mainQuery = queryFactory
                 .select(Projections.constructor(ReservationSimpleDto.class,
                         reservation.totalPrice, reservation.process,
@@ -61,7 +61,7 @@ public class ReservationRepositoryImpl implements ReservationRepositoryCustom {
     }
 
     private BooleanExpression userIdEq(Long userId) {
-        return userId == null ? null : reservation.user.id.eq(userId);
+        return userId == null ? null : user.id.eq(userId);
     }
 
     private BooleanExpression fromGoe(LocalDateTime from) {
