@@ -44,6 +44,6 @@ public class ReservationCommandService {
                 Reservation.Process.RESERVE_COMPLETED, user, schedule);
 
         reservationRepository.save(reservation);
-        messageCommandService.sendMessage("010-6346-1851", "예약을 성공하였습니다.");
+        messageCommandService.sendMessage("010-6346-1851", reservation.getId() + "예약을 성공하였습니다.");
     }
 }
