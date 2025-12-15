@@ -61,15 +61,4 @@ public class Schedule {
                 .ship(ship)
                 .build();
     }
-
-    public void isReservationPossible(int headCount) {
-        if (getShip().getMaxHeadCount() < getCurrentHeadCount() + headCount) {
-            throw new NoPossibleSeatException();
-        }
-    }
-
-    public void reserve(int headCount) {
-        isReservationPossible(headCount);
-        this.currentHeadCount += headCount;
-    }
 }

@@ -5,6 +5,8 @@ import com.jjubull.common.exception.UserNotFoundException;
 import com.jjubull.resourceserver.reservation.domain.Reservation;
 import com.jjubull.resourceserver.reservation.repository.ReservationRepository;
 import com.jjubull.resourceserver.schedule.domain.Schedule;
+import com.jjubull.resourceserver.schedule.exception.NoPossibleSeatException;
+import com.jjubull.resourceserver.schedule.repository.ScheduleJdbcRepository;
 import com.jjubull.resourceserver.schedule.repository.ScheduleRepository;
 import com.jjubull.resourceserver.ship.domain.Ship;
 import com.jjubull.resourceserver.ship.repository.ShipRepository;
@@ -24,19 +26,21 @@ public class ReservationCommandService {
     private final UserRepository userRepository;
     private final ScheduleRepository scheduleRepository;
     private final ReservationRepository reservationRepository;
+    private final ScheduleJdbcRepository scheduleJdbcRepository;
 
-    public int reserve(Long scheduleId, Long userId, int headCount, String request) {
+    public void reserve(Long scheduleId, Long userId, int headCount, String request) {
 
-        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(EntityNotFoundException::new);
-        schedule.reserve(headCount);
+        if (!scheduleJdbcRepository.tryReserve(scheduleId, headCount)) {
+            throw new NoPossibleSeatException();
+        }
 
-        Ship ship = schedule.getShip();
-        User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
-        Reservation reservation = Reservation.create(headCount, request, ship.getPrice() * headCount,
+        Schedule schedule = scheduleRepository.getReferenceById(scheduleId);
+        User user = userRepository.getReferenceById(userId);
+        int price = scheduleRepository.findShipPriceByScheduleId(scheduleId);
+
+        Reservation reservation = Reservation.create(headCount, request, price * headCount,
                 Reservation.Process.RESERVE_COMPLETED, user, schedule);
 
         reservationRepository.save(reservation);
-
-        return schedule.getCurrentHeadCount();
     }
 }
