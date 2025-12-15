@@ -29,7 +29,7 @@ public class MessageCommandService {
     private final MessageLogCommandService messageLogCommandService;
 
     @PreAuthorize("hasAuthority('GRADE_ADMIN')")
-    public void sendMessage(List<String> receivers, Status status) {
+    public void sendMessages(List<String> receivers, Status status) {
 
         List<Message> messages = receivers.stream()
                 .map(phone -> buildMessage(phone, status.message())).toList();
@@ -39,6 +39,19 @@ public class MessageCommandService {
             messageLogCommandService.saveLog(receivers, status.message(), Result.SUCCESS);
         } catch (SolapiEmptyResponseException | SolapiMessageNotReceivedException | SolapiUnknownException e) {
             messageLogCommandService.saveLog(receivers, status.message(), Result.FAILURE);
+            throw new MessageSendFailedException(e);
+        }
+    }
+
+    public void sendMessage(String receiver, String content) {
+
+        Message message = buildMessage(receiver, content);
+
+        try {
+            defaultMessageService.send(message);
+            //messageLogCommandService.saveLog(receiver, content, Result.SUCCESS);
+        } catch (SolapiEmptyResponseException | SolapiMessageNotReceivedException | SolapiUnknownException e) {
+            //messageLogCommandService.saveLog(receiver, content, Result.FAILURE);
             throw new MessageSendFailedException(e);
         }
     }

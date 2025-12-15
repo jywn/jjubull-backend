@@ -23,7 +23,7 @@ public class MessageController {
 
         for (int i = 0; i < 10; i++) dummyPhones.add("010-6346-1851");
 
-        messageCommandService.sendMessage(dummyPhones, Status.CANCELED);
+        messageCommandService.sendMessages(dummyPhones, Status.CANCELED);
 
         return ResponseEntity.ok(ApiResponse.success("문자 전송에 성공하였습니다"));
     }

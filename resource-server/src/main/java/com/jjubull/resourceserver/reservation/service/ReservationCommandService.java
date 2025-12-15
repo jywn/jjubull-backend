@@ -2,6 +2,7 @@ package com.jjubull.resourceserver.reservation.service;
 
 import com.jjubull.common.domain.User;
 import com.jjubull.common.exception.UserNotFoundException;
+import com.jjubull.resourceserver.message.service.MessageCommandService;
 import com.jjubull.resourceserver.reservation.domain.Reservation;
 import com.jjubull.resourceserver.reservation.repository.ReservationRepository;
 import com.jjubull.resourceserver.schedule.domain.Schedule;
@@ -27,6 +28,7 @@ public class ReservationCommandService {
     private final ScheduleRepository scheduleRepository;
     private final ReservationRepository reservationRepository;
     private final ScheduleJdbcRepository scheduleJdbcRepository;
+    private final MessageCommandService messageCommandService;
 
     public void reserve(Long scheduleId, Long userId, int headCount, String request) {
 
@@ -42,5 +44,6 @@ public class ReservationCommandService {
                 Reservation.Process.RESERVE_COMPLETED, user, schedule);
 
         reservationRepository.save(reservation);
+        messageCommandService.sendMessage("010-6346-1851", "예약을 성공하였습니다.");
     }
 }
