@@ -4,6 +4,7 @@ import com.jjubull.common.domain.User;
 import com.jjubull.common.exception.UserNotFoundException;
 import com.jjubull.resourceserver.message.service.MessageCommandService;
 import com.jjubull.resourceserver.reservation.domain.Reservation;
+import com.jjubull.resourceserver.reservation.event.ReservationCompletedEvent;
 import com.jjubull.resourceserver.reservation.repository.ReservationRepository;
 import com.jjubull.resourceserver.schedule.domain.Schedule;
 import com.jjubull.resourceserver.schedule.exception.NoPossibleSeatException;
@@ -14,6 +15,7 @@ import com.jjubull.resourceserver.ship.repository.ShipRepository;
 import com.jjubull.resourceserver.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +31,7 @@ public class ReservationCommandService {
     private final ReservationRepository reservationRepository;
     private final ScheduleJdbcRepository scheduleJdbcRepository;
     private final MessageCommandService messageCommandService;
+    private final ApplicationEventPublisher eventPublisher;
 
     public void reserve(Long scheduleId, Long userId, int headCount, String request) {
 
@@ -44,6 +47,7 @@ public class ReservationCommandService {
                 Reservation.Process.RESERVE_COMPLETED, user, schedule);
 
         reservationRepository.save(reservation);
-        messageCommandService.sendMessage("010-6346-1851", reservation.getId() + "예약을 성공하였습니다.");
+
+        eventPublisher.publishEvent(new ReservationCompletedEvent(reservation.getId()));
     }
 }
