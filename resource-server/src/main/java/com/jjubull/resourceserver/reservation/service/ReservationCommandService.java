@@ -30,7 +30,6 @@ public class ReservationCommandService {
     private final ScheduleRepository scheduleRepository;
     private final ReservationRepository reservationRepository;
     private final ScheduleJdbcRepository scheduleJdbcRepository;
-    private final MessageCommandService messageCommandService;
     private final ApplicationEventPublisher eventPublisher;
 
     public void reserve(Long scheduleId, Long userId, int headCount, String request) {
