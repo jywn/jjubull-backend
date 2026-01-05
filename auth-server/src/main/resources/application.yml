@@ -13,6 +13,13 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  data:
+    redis:
+      port: 6379
+      host: redis
+      password: ${REDIS_PASSWORD}
+  #      host: localhost
+
   flyway:
     enabled: false
 
@@ -43,6 +50,7 @@ spring:
             scope: openid
             provider: google
             redirect-uri: https://jjubull-auth.duckdns.org/auth/google/callback
+#            redirect-uri: http://localhost:9000/auth/google/callback
 
         provider:
           kakao:

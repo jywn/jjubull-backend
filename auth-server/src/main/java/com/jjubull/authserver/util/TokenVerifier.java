@@ -1,12 +1,8 @@
 package com.jjubull.authserver.util;
 
-import com.jjubull.authserver.exception.AccessTokenExpiredException;
+import com.jjubull.common.exception.AccessTokenExpiredException;
 import com.nimbusds.jose.*;
-import com.nimbusds.jose.jwk.source.JWKSource;
-import com.nimbusds.jose.proc.SecurityContext;
 import com.nimbusds.jwt.SignedJWT;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -20,7 +16,7 @@ public class TokenVerifier {
             }
 
             if (signedJWT.getJWTClaimsSet().getExpirationTime().before(new Date())) {
-                throw new AccessTokenExpiredException("Access Token is expired");
+                throw new AccessTokenExpiredException();
             }
 
         } catch (Exception e) {

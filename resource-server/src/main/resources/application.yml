@@ -16,11 +16,19 @@ spring:
       maximum-pool-size: 16
       minimum-idle: 16
 
+  data:
+    redis:
+      port: 6379
+      host: redis
+      password: ${REDIS_PASSWORD}
+  #      host: localhost
+
   security:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: https://jjubull-auth.duckdns.org/oauth2/jwks
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+#          jwk-set-uri: https://jjubull-auth.duckdns.org/oauth2/jwks
 
 # Solapi SMS 설정
 solapi:

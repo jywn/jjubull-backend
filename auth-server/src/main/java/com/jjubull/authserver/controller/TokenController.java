@@ -2,8 +2,8 @@ package com.jjubull.authserver.controller;
 
 import com.jjubull.authserver.domain.OAuth2User;
 import com.jjubull.authserver.dto.RefreshTokenDto;
-import com.jjubull.authserver.service.LoginService;
 import com.jjubull.authserver.service.OAuth2UserService;
+import com.jjubull.authserver.store.RefreshTokenStore;
 import com.jjubull.authserver.service.TokenService;
 import com.jjubull.common.dto.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,15 +21,15 @@ public class TokenController {
 
     private final TokenService tokenService;
     private final OAuth2UserService userService;
+    private final RefreshTokenStore refreshTokenStore;
 
     @PostMapping("/refresh")
-    public ResponseEntity<ApiResponse<String>> refreshToken(@CookieValue("refresh_token") String refreshToken) {
+    public ResponseEntity<ApiResponse<String>> exchangeToken(@CookieValue("refresh_token") String refreshToken) {
 
-        Long userId = tokenService.verifyRefreshToken(refreshToken);
+        Long userId = refreshTokenStore.getUserIdAndDelete(refreshToken);
+        RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(userId);
+
         OAuth2User user = userService.getUser(userId);
-        tokenService.deleteRefreshToken(refreshToken);
-
-        RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
         String accessToken = tokenService.buildMyAccessToken(user);
 
         return ResponseEntity.ok()

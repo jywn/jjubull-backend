@@ -30,10 +30,11 @@ public class DefaultSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .authorizeHttpRequests(request -> request
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/", "/auth/**", "/oauth2/**", "/.well-known/jwks.json", "/error", "/signup").permitAll()
+                .requestMatchers("/", "/auth/**", "/oauth2/**", "/.well-known/jwks.json", "/error", "/signup", "/token/refresh").permitAll()
                 .anyRequest().authenticated())
                 .logout(AbstractHttpConfigurer::disable);;
 

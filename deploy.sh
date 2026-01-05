@@ -45,5 +45,4 @@ echo "$NEW" > "$COLOR_FILE"
 echo "[CLEANUP] cleaning unused docker resources..."
 docker container prune -f
 docker image prune -af
-docker volume prune -f
 

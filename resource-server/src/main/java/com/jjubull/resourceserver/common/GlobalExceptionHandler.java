@@ -1,6 +1,7 @@
 package com.jjubull.resourceserver.common;
 
 import com.jjubull.common.dto.response.ApiResponse;
+import com.jjubull.common.exception.AccessTokenExpiredException;
 import com.jjubull.common.exception.BusinessException;
 import com.jjubull.common.exception.SystemException;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,12 @@ public class GlobalExceptionHandler {
         log.error("System error occurred", e);
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ApiResponse.failure(e.getMessage(), null));
+    }
+
+    @ExceptionHandler(AccessTokenExpiredException.class)
+    public ResponseEntity<ApiResponse<Void>> accessTokenExpiredExceptionHandler(AccessTokenExpiredException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(ApiResponse.failure(e.getMessage(), null));
     }
 }

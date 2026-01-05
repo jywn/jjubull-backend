@@ -6,6 +6,7 @@ import com.jjubull.authserver.util.TokenVerifier;
 import com.jjubull.common.domain.Grade;
 import com.jjubull.common.domain.Provider;
 import com.jjubull.common.dto.response.ApiResponse;
+import com.jjubull.common.exception.AccessTokenExpiredException;
 import com.jjubull.common.exception.BusinessException;
 import com.jjubull.common.exception.SystemException;
 import com.nimbusds.jose.JOSEException;

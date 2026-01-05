@@ -10,6 +10,7 @@ import com.nimbusds.jwt.SignedJWT;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class JwtBuilder {
 
@@ -45,6 +46,7 @@ public class JwtBuilder {
                 .subject(sub)
                 .issuer("jjubul-auth-server")
                 .audience("jjubul-api-server")
+                .jwtID(UUID.randomUUID().toString())
                 .issueTime(new Date())
                 .expirationTime(new Date(new Date().getTime() + 10 * 60 * 1000))
                 .claim("provider", provider)
