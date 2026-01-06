@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.ExceptionTranslationFilter;
 
 import java.util.ArrayList;
 
@@ -36,13 +37,13 @@ public class DefaultSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
 //                        .anyRequest().permitAll()) // 부하테스트 용도
-                        .requestMatchers("/schedules/*/reservation/normal", "/schedules/main", "schedules/sch*").permitAll()
+                        .requestMatchers("/schedules/*/reservation/normal", "/schedules/main", "/schedules/sch*").permitAll()
                         .requestMatchers(HttpMethod.POST, "/schedules/*/reservation").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/", "/error").permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated())
-                .addFilterAfter(accessTokenBlacklistFilter, BearerTokenAuthenticationFilter.class)
+                .addFilterBefore(accessTokenBlacklistFilter, ExceptionTranslationFilter.class)
                 .oauth2ResourceServer(resource -> resource.jwt(
                         jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
                 ))
