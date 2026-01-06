@@ -26,7 +26,9 @@ import java.util.ArrayList;
 public class DefaultSecurityConfig {
     @Bean
     @Order(2)
-    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http, AccessTokenBlacklistFilter accessTokenBlacklistFilter) throws Exception {
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,
+                                                          AccessTokenBlacklistFilter accessTokenBlacklistFilter,
+                                                          JsonAuthenticationEntryPoint entryPoint) throws Exception {
 
         http
                 .cors(Customizer.withDefaults())
@@ -44,6 +46,7 @@ public class DefaultSecurityConfig {
                 .oauth2ResourceServer(resource -> resource.jwt(
                         jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
                 ))
+                .exceptionHandling(e -> e.authenticationEntryPoint(entryPoint))
                 .logout(AbstractHttpConfigurer::disable);
 
         return http.build();
