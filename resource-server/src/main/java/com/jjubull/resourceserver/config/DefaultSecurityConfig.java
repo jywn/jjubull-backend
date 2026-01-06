@@ -43,7 +43,7 @@ public class DefaultSecurityConfig {
                         .requestMatchers("/", "/error").permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated())
-                .addFilterBefore(accessTokenBlacklistFilter, ExceptionTranslationFilter.class)
+                .addFilterAfter(accessTokenBlacklistFilter, ExceptionTranslationFilter.class)
                 .oauth2ResourceServer(resource -> resource.jwt(
                         jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
                 ))
