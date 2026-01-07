@@ -48,7 +48,11 @@ class ReservationCommandServiceTest {
             when(scheduleJdbcRepository.tryReserve(1L, 1))
                     .thenReturn(false);
 
-            // when & then
+            when(scheduleRepository.existsById(1L))
+                    .thenReturn(true);
+
+
+        // when & then
             assertThrows(
                     NoPossibleSeatException.class,
                     () -> reservationCommandService.reserve(1L, 1L, 1, "테스트")
@@ -61,6 +65,9 @@ class ReservationCommandServiceTest {
         // given
         Long scheduleId = 1L;
         Long userId = 1L;
+
+        when(scheduleRepository.existsById(scheduleId))
+                .thenReturn(true);
 
         when(scheduleJdbcRepository.tryReserve(scheduleId, 1))
                 .thenReturn(true);
