@@ -94,7 +94,7 @@ public class ScheduleService {
     public boolean isForMain(LocalDateTime from, LocalDateTime to) {
         YearMonth fromYm = YearMonth.from(from);
         YearMonth toYm = YearMonth.from(to);
-        return fromYm.equals(toYm)
+        return fromYm.equals(toYm.minusMonths(1))
                 && from.equals(fromYm.atDay(1).atStartOfDay())
                 && to.equals(fromYm.plusMonths(1).atDay(1).atStartOfDay());
     }
