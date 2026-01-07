@@ -16,8 +16,8 @@ spring:
   data:
     redis:
       port: 6379
-      host: localhost
-#      password: ${REDIS_PASSWORD}
+      host: redis
+      password: ${REDIS_PASSWORD}
 #        host: localhost
 
   flyway:
