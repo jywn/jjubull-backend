@@ -17,7 +17,7 @@ public class AuthRateLimitInterceptor implements HandlerInterceptor {
     private final RateLimiter rateLimiter;
 
     private static final String KEY_PREFIX = "rl:cp:ip:";
-    private static final int LIMIT = 120;
+    private static final int LIMIT = 300;
     private static final Duration TTL = Duration.ofSeconds(60);
 
     @Override

@@ -34,6 +34,10 @@ public class ReservationCommandService {
 
     public void reserve(Long scheduleId, Long userId, int headCount, String request) {
 
+        if (!scheduleRepository.existsById(scheduleId)) {
+            throw new EntityNotFoundException("Schedule not found");
+        }
+
         if (!scheduleJdbcRepository.tryReserve(scheduleId, headCount)) {
             throw new NoPossibleSeatException();
         }

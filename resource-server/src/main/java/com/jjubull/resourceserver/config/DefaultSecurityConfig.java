@@ -37,7 +37,7 @@ public class DefaultSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
 //                        .anyRequest().permitAll()) // 부하테스트 용도
-                        .requestMatchers("/schedules/*/reservation/normal", "/schedules/main", "/schedules/sch*").permitAll()
+                        .requestMatchers("/schedules/*/reservation/normal", "/schedules/main", "/schedules/*").permitAll()
                         .requestMatchers(HttpMethod.POST, "/schedules/*/reservation").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/", "/error").permitAll()

@@ -29,7 +29,7 @@ public class ScheduleRepositoryImpl implements ScheduleRepositoryCustom {
                 .from(QSchedule.schedule)
                 .leftJoin(QShip.ship).on(QShip.ship.id.eq(QSchedule.schedule.ship.id))
                 .where(QSchedule.schedule.departure.after(from).and(QSchedule.schedule.departure.before(to)))
-                .orderBy(QSchedule.schedule.departure.desc())
+                .orderBy(QSchedule.schedule.departure.asc())
                 .fetch();
 
         return mainQuery;
