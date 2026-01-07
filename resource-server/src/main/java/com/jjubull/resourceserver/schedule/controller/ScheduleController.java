@@ -26,4 +26,11 @@ public class ScheduleController {
 
         return ResponseEntity.ok(ApiResponse.success("출항 일정 목록 조회에 성공하였습니다.", ScheduleMainResponse.from(schedules)));
     }
+
+    @GetMapping("/main/rdb")
+    public ResponseEntity<ApiResponse<ScheduleMainResponse>> getSchedulesRdb(LocalDateTime from, LocalDateTime to) {
+        List<ScheduleMainDto> schedules = scheduleQueryService.getSchedules(from, to);
+
+        return ResponseEntity.ok(ApiResponse.success("출항 일정 목록 조회에 성공하였습니다.", ScheduleMainResponse.from(schedules)));
+    }
 }
