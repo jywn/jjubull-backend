@@ -96,6 +96,6 @@ public class ScheduleService {
         YearMonth toYm = YearMonth.from(to);
         return fromYm.equals(toYm)
                 && from.equals(fromYm.atDay(1).atStartOfDay())
-                && to.equals(toYm.plusMonths(1).atDay(1).atStartOfDay());
+                && to.equals(fromYm.plusMonths(1).atDay(1).atStartOfDay());
     }
 }
