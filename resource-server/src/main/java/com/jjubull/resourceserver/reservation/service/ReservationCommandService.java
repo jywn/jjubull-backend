@@ -44,7 +44,7 @@ public class ReservationCommandService {
             throw new NoPossibleSeatException();
         }
 
-        String cacheKey = "cache:main:" + YearMonth.from(schedule.getDeparture()).toString();
+        String cacheKey = "cache:main:" + YearMonth.from(schedule.getDeparture());
         scheduleStore.evict(cacheKey);
 
         User user = userRepository.getReferenceById(userId);
