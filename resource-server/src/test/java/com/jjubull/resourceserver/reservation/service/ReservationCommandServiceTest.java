@@ -56,10 +56,11 @@ class ReservationCommandServiceTest {
         when(scheduleJdbcRepository.tryReserve(1L, 1))
                 .thenReturn(false);
 
-        when(scheduleRepository.findById(1L))
-                .thenReturn(Optional.ofNullable(mock(Schedule.class)));
-
         Schedule mockSchedule = mock(Schedule.class);
+
+        when(scheduleRepository.findById(1L))
+                .thenReturn(Optional.of(mockSchedule));
+
         when(mockSchedule.getDeparture()).thenReturn(LocalDateTime.now());
 
 
@@ -78,11 +79,11 @@ class ReservationCommandServiceTest {
         Long scheduleId = 1L;
         Long userId = 1L;
 
-        when(scheduleRepository.findById(1L))
-                .thenReturn(Optional.ofNullable(mock(Schedule.class)));
-
         Schedule mockSchedule = mock(Schedule.class);
         when(mockSchedule.getDeparture()).thenReturn(LocalDateTime.now());
+
+        when(scheduleRepository.findById(1L))
+                .thenReturn(Optional.of(mockSchedule));
 
         when(scheduleJdbcRepository.tryReserve(scheduleId, 1))
                 .thenReturn(true);
