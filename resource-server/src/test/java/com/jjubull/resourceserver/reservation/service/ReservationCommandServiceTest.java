@@ -16,6 +16,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -48,8 +50,8 @@ class ReservationCommandServiceTest {
             when(scheduleJdbcRepository.tryReserve(1L, 1))
                     .thenReturn(false);
 
-            when(scheduleRepository.existsById(1L))
-                    .thenReturn(true);
+            when(scheduleRepository.findById(1L))
+                    .thenReturn(Optional.ofNullable(mock(Schedule.class)));
 
 
         // when & then
@@ -66,8 +68,8 @@ class ReservationCommandServiceTest {
         Long scheduleId = 1L;
         Long userId = 1L;
 
-        when(scheduleRepository.existsById(scheduleId))
-                .thenReturn(true);
+        when(scheduleRepository.findById(1L))
+                .thenReturn(Optional.ofNullable(mock(Schedule.class)));
 
         when(scheduleJdbcRepository.tryReserve(scheduleId, 1))
                 .thenReturn(true);
