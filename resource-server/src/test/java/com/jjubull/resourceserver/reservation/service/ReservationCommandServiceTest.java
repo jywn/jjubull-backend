@@ -61,10 +61,6 @@ class ReservationCommandServiceTest {
         when(scheduleRepository.findById(1L))
                 .thenReturn(Optional.of(mockSchedule));
 
-        when(mockSchedule.getDeparture()).thenReturn(LocalDateTime.now());
-
-
-
     // when & then
         assertThrows(
                 NoPossibleSeatException.class,
