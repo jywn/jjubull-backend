@@ -10,6 +10,7 @@ import com.jjubull.resourceserver.schedule.domain.Schedule;
 import com.jjubull.resourceserver.schedule.exception.NoPossibleSeatException;
 import com.jjubull.resourceserver.schedule.repository.ScheduleJdbcRepository;
 import com.jjubull.resourceserver.schedule.repository.ScheduleRepository;
+import com.jjubull.resourceserver.schedule.repository.ScheduleStore;
 import com.jjubull.resourceserver.ship.domain.Ship;
 import com.jjubull.resourceserver.ship.repository.ShipRepository;
 import com.jjubull.resourceserver.user.repository.UserRepository;
@@ -19,6 +20,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.YearMonth;
 import java.util.Optional;
 
 @Service
@@ -26,6 +28,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReservationCommandService {
 
+    private final ScheduleStore scheduleStore;
     private final UserRepository userRepository;
     private final ScheduleRepository scheduleRepository;
     private final ReservationRepository reservationRepository;
@@ -34,15 +37,16 @@ public class ReservationCommandService {
 
     public void reserve(Long scheduleId, Long userId, int headCount, String request) {
 
-        if (!scheduleRepository.existsById(scheduleId)) {
-            throw new EntityNotFoundException("Schedule not found");
-        }
+        Schedule schedule = scheduleRepository.findById(scheduleId)
+                .orElseThrow(EntityNotFoundException::new);
 
         if (!scheduleJdbcRepository.tryReserve(scheduleId, headCount)) {
             throw new NoPossibleSeatException();
         }
 
-        Schedule schedule = scheduleRepository.getReferenceById(scheduleId);
+        String cacheKey = "cache:main:" + YearMonth.from(schedule.getDeparture()).toString();
+        scheduleStore.evict(cacheKey);
+
         User user = userRepository.getReferenceById(userId);
         int price = scheduleRepository.findShipPriceByScheduleId(scheduleId);
 

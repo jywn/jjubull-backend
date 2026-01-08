@@ -4,12 +4,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jjubull.resourceserver.schedule.dto.command.ScheduleMainDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.Objects;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class ScheduleStore {
@@ -27,6 +29,7 @@ public class ScheduleStore {
         try {
             return Boolean.TRUE.equals(stringRedisTemplate.opsForValue().setIfAbsent(lockKey, requestId, LOCK_TTL));
         } catch (Exception e) {
+            log.warn(e.getMessage());
             return false;
         }
     }
@@ -43,6 +46,14 @@ public class ScheduleStore {
         Long count = stringRedisTemplate.opsForValue().increment("hit");
         if (Objects.equals(count, 1L)) {
             stringRedisTemplate.expire("hit", Duration.ofSeconds(60));
+        }
+    }
+
+    public void evict(String cacheKey) {
+        try {
+            stringRedisTemplate.delete(cacheKey);
+        } catch (Exception e) {
+            log.warn(e.getMessage());
         }
     }
 }
