@@ -17,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.Optional;
 
@@ -51,48 +52,52 @@ class ReservationCommandServiceTest {
     @Test
     @DisplayName("예약이_실패하면_예외_발생")
     void reserve_fail() {
-            // given
-            when(scheduleJdbcRepository.tryReserve(1L, 1))
-                    .thenReturn(false);
+        // given
+        when(scheduleJdbcRepository.tryReserve(1L, 1))
+                .thenReturn(false);
 
-            when(scheduleRepository.findById(1L))
-                    .thenReturn(Optional.ofNullable(mock(Schedule.class)));
+        when(scheduleRepository.findById(1L))
+                .thenReturn(Optional.ofNullable(mock(Schedule.class)));
+
+        Schedule mockSchedule = mock(Schedule.class);
+        when(mockSchedule.getDeparture()).thenReturn(LocalDateTime.now());
 
 
-        // when & then
-            assertThrows(
-                    NoPossibleSeatException.class,
-                    () -> reservationCommandService.reserve(1L, 1L, 1, "테스트")
-            );
+
+    // when & then
+        assertThrows(
+                NoPossibleSeatException.class,
+                () -> reservationCommandService.reserve(1L, 1L, 1, "테스트")
+        );
     }
 
-//    @Test
-//    @DisplayName("예약이_성공하면_저장_호출")
-//    void reserve_success() {
-//        // given
-//        Long scheduleId = 1L;
-//        Long userId = 1L;
-//
-//        when(scheduleRepository.findById(1L))
-//                .thenReturn(Optional.ofNullable(mock(Schedule.class)));
-//
-//        when(scheduleJdbcRepository.tryReserve(scheduleId, 1))
-//                .thenReturn(true);
-//
-//        when(scheduleRepository.getReferenceById(scheduleId))
-//                .thenReturn(mock(Schedule.class));
-//
-//        when(userRepository.getReferenceById(userId))
-//                .thenReturn(mock(User.class));
-//
-//        when(scheduleRepository.findShipPriceByScheduleId(scheduleId))
-//                .thenReturn(10000);
-//
-//        // when
-//        reservationCommandService.reserve(scheduleId, userId, 1, "요청");
-//
-//        // then
-//        verify(reservationRepository).save(any());
-//    }
+    @Test
+    @DisplayName("예약이_성공하면_저장_호출")
+    void reserve_success() {
+        // given
+        Long scheduleId = 1L;
+        Long userId = 1L;
+
+        when(scheduleRepository.findById(1L))
+                .thenReturn(Optional.ofNullable(mock(Schedule.class)));
+
+        Schedule mockSchedule = mock(Schedule.class);
+        when(mockSchedule.getDeparture()).thenReturn(LocalDateTime.now());
+
+        when(scheduleJdbcRepository.tryReserve(scheduleId, 1))
+                .thenReturn(true);
+
+        when(userRepository.getReferenceById(userId))
+                .thenReturn(mock(User.class));
+
+        when(scheduleRepository.findShipPriceByScheduleId(scheduleId))
+                .thenReturn(10000);
+
+        // when
+        reservationCommandService.reserve(scheduleId, userId, 1, "요청");
+
+        // then
+        verify(reservationRepository).save(any());
+    }
 
 }
