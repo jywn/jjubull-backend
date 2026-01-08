@@ -28,7 +28,6 @@ import java.time.Instant;
 public class UserController {
 
     private final OAuth2UserService oAuth2UserService;
-    private final AccessTokenBlockStore accessTokenBlockStore;
     private final AccessTokenService accessTokenService;
     private final RefreshTokenService refreshTokenService;
 
@@ -51,9 +50,7 @@ public class UserController {
             @AuthenticationPrincipal Jwt accessToken) {
 
         RefreshTokenDto refreshTokenDto = refreshTokenService.deleteRefreshToken(refreshToken);
-
-        accessTokenBlockStore.block(accessToken.getId(),
-                Duration.between(Instant.now(), accessToken.getExpiresAt()));
+        accessTokenService.blockMyAccessToken(accessToken);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, refreshTokenDto.getCookie().toString())
