@@ -1,5 +1,6 @@
 package com.jjubull.authserver.config;
 
+import com.jjubull.authserver.config.interceptor.AuthRateLimitInterceptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

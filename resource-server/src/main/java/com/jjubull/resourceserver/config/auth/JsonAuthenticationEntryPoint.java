@@ -1,4 +1,4 @@
-package com.jjubull.resourceserver.config;
+package com.jjubull.resourceserver.config.auth;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

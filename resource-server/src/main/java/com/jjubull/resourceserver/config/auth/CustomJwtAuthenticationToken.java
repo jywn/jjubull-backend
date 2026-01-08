@@ -1,4 +1,4 @@
-package com.jjubull.resourceserver.config;
+package com.jjubull.resourceserver.config.auth;
 
 import com.jjubull.resourceserver.common.AuthenticatedUser;
 import org.springframework.security.authentication.AbstractAuthenticationToken;

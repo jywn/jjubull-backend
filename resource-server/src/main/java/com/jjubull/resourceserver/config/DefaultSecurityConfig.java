@@ -1,6 +1,10 @@
 package com.jjubull.resourceserver.config;
 
 import com.jjubull.resourceserver.common.AuthenticatedUser;
+import com.jjubull.resourceserver.config.auth.CustomJwtAuthenticationConverter;
+import com.jjubull.resourceserver.config.auth.CustomJwtAuthenticationToken;
+import com.jjubull.resourceserver.config.auth.JsonAuthenticationEntryPoint;
+import com.jjubull.resourceserver.config.filter.AccessTokenBlacklistFilter;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +21,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.ExceptionTranslationFilter;
 
@@ -29,6 +32,7 @@ public class DefaultSecurityConfig {
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,
                                                           AccessTokenBlacklistFilter accessTokenBlacklistFilter,
+                                                          CustomJwtAuthenticationConverter jwtAuthenticationConverter,
                                                           JsonAuthenticationEntryPoint entryPoint) throws Exception {
 
         http
@@ -45,31 +49,12 @@ public class DefaultSecurityConfig {
                         .anyRequest().authenticated())
                 .addFilterAfter(accessTokenBlacklistFilter, ExceptionTranslationFilter.class)
                 .oauth2ResourceServer(resource -> resource.jwt(
-                        jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
+                        jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter)
                 ))
                 .exceptionHandling(e -> e.authenticationEntryPoint(entryPoint))
                 .logout(AbstractHttpConfigurer::disable);
 
         return http.build();
-    }
-
-
-    @Bean
-    public Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter() {
-
-        return new Converter<Jwt, AbstractAuthenticationToken>() {
-
-            @Override
-            public AbstractAuthenticationToken convert(Jwt jwt) {
-
-                ArrayList<GrantedAuthority> authorities = new ArrayList<>();
-                authorities.add(new SimpleGrantedAuthority("GRADE_" + jwt.getClaim("grade").toString()));
-
-                AuthenticatedUser authenticatedUser = AuthenticatedUser.from(jwt);
-
-                return new CustomJwtAuthenticationToken(jwt, authorities, authenticatedUser);
-            }
-        };
     }
 
     @Bean

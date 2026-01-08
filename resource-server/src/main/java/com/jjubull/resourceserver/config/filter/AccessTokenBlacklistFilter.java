@@ -1,7 +1,7 @@
-package com.jjubull.resourceserver.config;
+package com.jjubull.resourceserver.config.filter;
 
-import com.jjubull.common.exception.AccessTokenExpiredException;
-import com.jjubull.resourceserver.config.store.AccessTokenBlockStore;
+import com.jjubull.resourceserver.config.auth.CustomJwtAuthenticationToken;
+import com.jjubull.resourceserver.store.AccessTokenBlockStore;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,8 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.server.resource.InvalidBearerTokenException;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 

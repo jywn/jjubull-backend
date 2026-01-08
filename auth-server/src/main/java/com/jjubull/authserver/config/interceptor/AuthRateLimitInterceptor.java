@@ -1,4 +1,4 @@
-package com.jjubull.authserver.config;
+package com.jjubull.authserver.config.interceptor;
 
 import com.jjubull.authserver.util.RateLimiter;
 import jakarta.servlet.http.HttpServletRequest;

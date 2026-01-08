@@ -1,4 +1,4 @@
-package com.jjubull.resourceserver.config.store;
+package com.jjubull.resourceserver.store;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
