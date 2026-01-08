@@ -7,11 +7,13 @@ import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.UUID;
 
+@Slf4j
 public class JwtBuilder {
 
     public static String buildMyToken(RSAKey rsaKey, String sub, String provider, String grade) {
@@ -28,11 +30,16 @@ public class JwtBuilder {
         }
     }
 
-    private static SignedJWT buildSign(RSAKey rsaKey, JWSHeader header, JWTClaimsSet claims) throws JOSEException {
-        RSASSASigner signer = new RSASSASigner(rsaKey);
-        SignedJWT jwt = new SignedJWT(header, claims);
-        jwt.sign(signer);
-        return jwt;
+    private static SignedJWT buildSign(RSAKey rsaKey, JWSHeader header, JWTClaimsSet claims) {
+        try {
+            RSASSASigner signer = new RSASSASigner(rsaKey);
+            SignedJWT jwt = new SignedJWT(header, claims);
+            jwt.sign(signer);
+            return jwt;
+        } catch (JOSEException e) {
+            log.error(e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
     }
 
     private static JWSHeader buildHeader(RSAKey rsaKey) {

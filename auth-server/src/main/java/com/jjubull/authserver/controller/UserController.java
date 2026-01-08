@@ -3,9 +3,10 @@ package com.jjubull.authserver.controller;
 import com.jjubull.authserver.domain.OAuth2User;
 import com.jjubull.authserver.dto.NewUserDto;
 import com.jjubull.authserver.dto.RefreshTokenDto;
+import com.jjubull.authserver.service.AccessTokenService;
 import com.jjubull.authserver.store.AccessTokenBlockStore;
 import com.jjubull.authserver.service.OAuth2UserService;
-import com.jjubull.authserver.service.TokenService;
+import com.jjubull.authserver.service.RefreshTokenService;
 import com.jjubull.common.dto.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,14 +29,15 @@ public class UserController {
 
     private final OAuth2UserService oAuth2UserService;
     private final AccessTokenBlockStore accessTokenBlockStore;
-    private final TokenService tokenService;
+    private final AccessTokenService accessTokenService;
+    private final RefreshTokenService refreshTokenService;
 
     @PostMapping("/signup")
     public ResponseEntity<ApiResponse<String>> signup(@RequestBody NewUserDto dto) {
 
         OAuth2User user = oAuth2UserService.newUser(dto.getJwt(), dto.getUsername(), dto.getNickname(), dto.getPhone());
-        String myAccessToken = tokenService.buildMyAccessToken(user);
-        RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
+        String myAccessToken = accessTokenService.buildMyAccessToken(user);
+        RefreshTokenDto refreshTokenDto = refreshTokenService.createRefreshToken(user.getId());
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + myAccessToken)
@@ -48,7 +50,7 @@ public class UserController {
             @CookieValue("refresh_token") String refreshToken,
             @AuthenticationPrincipal Jwt accessToken) {
 
-        RefreshTokenDto refreshTokenDto = tokenService.deleteRefreshToken(refreshToken);
+        RefreshTokenDto refreshTokenDto = refreshTokenService.deleteRefreshToken(refreshToken);
 
         accessTokenBlockStore.block(accessToken.getId(),
                 Duration.between(Instant.now(), accessToken.getExpiresAt()));

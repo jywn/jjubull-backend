@@ -1,10 +1,10 @@
 package com.jjubull.authserver.controller;
 
 import com.jjubull.authserver.domain.OAuth2User;
-import com.jjubull.common.domain.Provider;
 import com.jjubull.authserver.dto.RefreshTokenDto;
+import com.jjubull.authserver.service.AccessTokenService;
 import com.jjubull.authserver.service.LoginService;
-import com.jjubull.authserver.service.TokenService;
+import com.jjubull.authserver.service.RefreshTokenService;
 import com.jjubull.authserver.service.OAuth2UserService;
 import com.jjubull.common.dto.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,8 @@ import java.net.URI;
 public class AuthController {
 
     private final LoginService loginService;
-    private final TokenService tokenService;
+    private final RefreshTokenService refreshTokenService;
+    private final AccessTokenService accessTokenService;
     private final OAuth2UserService userService;
 
     @GetMapping("/{provider}/start")
@@ -41,9 +42,9 @@ public class AuthController {
 
         OAuth2User user = userService.getUserByToken(idToken, provider);
 
-        String myAccessToken = tokenService.buildMyAccessToken(user);
+        String myAccessToken = accessTokenService.buildMyAccessToken(user);
 
-        RefreshTokenDto refreshTokenDto = tokenService.createRefreshToken(user.getId());
+        RefreshTokenDto refreshTokenDto = refreshTokenService.createRefreshToken(user.getId());
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + myAccessToken)

@@ -17,20 +17,11 @@ import java.util.UUID;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class TokenService {
+public class RefreshTokenService {
 
     private static final Long RT_MAX_SECONDS = 14L * 24 * 60 * 60;
     private static final Duration RT_MAX_DAYS = Duration.ofDays(14);
     private final RefreshTokenStore refreshTokenStore;
-    private final JwkUtil jwkUtil;
-
-    public String buildMyAccessToken(OAuth2User user) {
-        try {
-            return JwtBuilder.buildMyToken(jwkUtil.getMyRsaKey(), user.getSub(), user.getProvider().toString(), user.getGrade().toString());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public RefreshTokenDto createRefreshToken(Long userId) {
 
