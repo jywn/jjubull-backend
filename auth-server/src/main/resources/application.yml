@@ -16,9 +16,9 @@ spring:
   data:
     redis:
       port: 6379
-      host: redis
-      password: ${REDIS_PASSWORD}
-#        host: localhost
+#      host: redis
+#      password: ${REDIS_PASSWORD}
+      host: localhost
 
   flyway:
     enabled: false
@@ -49,8 +49,8 @@ spring:
             client-secret: ${GOOGLE_CLIENT_SECRET}
             scope: openid
             provider: google
-            redirect-uri: https://jjubull-auth.duckdns.org/auth/google/callback
-#            redirect-uri: http://localhost:9000/auth/google/callback
+#            redirect-uri: https://jjubull-auth.duckdns.org/auth/google/callback
+            redirect-uri: http://localhost:9000/auth/google/callback
 
         provider:
           kakao:

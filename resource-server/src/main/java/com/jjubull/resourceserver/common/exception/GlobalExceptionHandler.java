@@ -1,4 +1,4 @@
-package com.jjubull.resourceserver.common;
+package com.jjubull.resourceserver.common.exception;
 
 import com.jjubull.common.dto.response.ApiResponse;
 import com.jjubull.common.exception.AccessTokenExpiredException;

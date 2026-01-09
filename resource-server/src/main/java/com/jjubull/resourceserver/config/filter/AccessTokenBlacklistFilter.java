@@ -1,5 +1,6 @@
 package com.jjubull.resourceserver.config.filter;
 
+import com.jjubull.resourceserver.common.exception.AccessTokenBlockedException;
 import com.jjubull.resourceserver.config.auth.CustomJwtAuthenticationToken;
 import com.jjubull.resourceserver.store.AccessTokenBlockStore;
 import jakarta.servlet.FilterChain;
@@ -29,7 +30,7 @@ public class AccessTokenBlacklistFilter extends OncePerRequestFilter {
         if (authentication instanceof CustomJwtAuthenticationToken customJwtAuthenticationToken) {
             String jti = customJwtAuthenticationToken.getJwt().getId();
             if (accessTokenBlockStore.isBlocked(jti)) {
-                throw new AuthenticationServiceException("Access token blocked: " + jti);
+                throw new AccessTokenBlockedException();
             }
         }
 

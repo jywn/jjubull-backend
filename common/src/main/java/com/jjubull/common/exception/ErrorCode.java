@@ -21,6 +21,7 @@ public enum ErrorCode {
 
     /** Access token 예외 **/
     ACCESS_TOKEN_EXPIRED("A002", "액세스 토큰 만료"),
+    ACCESS_TOKEN_BLOCKED("A003", "액세스 토큰 차단됨"),
 
     /** Key 예외 **/
     KEY("K001", "잘못된 키 사용"),

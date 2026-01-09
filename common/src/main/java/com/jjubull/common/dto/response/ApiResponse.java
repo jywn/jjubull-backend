@@ -30,6 +30,10 @@ public class ApiResponse<T> {
         return new ApiResponse<>(false, "SERVER_ERROR", message, data);
     }
 
+    public static <T> ApiResponse<T> failure(String code, String message, T data) {
+        return new ApiResponse<>(false, code, message, data);
+    }
+
     public static <T> ApiResponse<T> success(String message) {
         return new ApiResponse<>(true, "SUCCESS", message, null);
     }

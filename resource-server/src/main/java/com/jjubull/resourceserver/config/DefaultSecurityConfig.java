@@ -1,9 +1,9 @@
 package com.jjubull.resourceserver.config;
 
 import com.jjubull.resourceserver.common.AuthenticatedUser;
+import com.jjubull.resourceserver.config.auth.CustomAuthenticationEntryPoint;
 import com.jjubull.resourceserver.config.auth.CustomJwtAuthenticationConverter;
 import com.jjubull.resourceserver.config.auth.CustomJwtAuthenticationToken;
-import com.jjubull.resourceserver.config.auth.JsonAuthenticationEntryPoint;
 import com.jjubull.resourceserver.config.filter.AccessTokenBlacklistFilter;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +21,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.ExceptionTranslationFilter;
 
@@ -33,7 +34,7 @@ public class DefaultSecurityConfig {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,
                                                           AccessTokenBlacklistFilter accessTokenBlacklistFilter,
                                                           CustomJwtAuthenticationConverter jwtAuthenticationConverter,
-                                                          JsonAuthenticationEntryPoint entryPoint) throws Exception {
+                                                          CustomAuthenticationEntryPoint entryPoint) throws Exception {
 
         http
                 .cors(Customizer.withDefaults())
@@ -48,6 +49,7 @@ public class DefaultSecurityConfig {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest().authenticated())
                 .addFilterAfter(accessTokenBlacklistFilter, ExceptionTranslationFilter.class)
+//                .addFilterAfter(accessTokenBlacklistFilter, BearerTokenAuthenticationFilter.class)
                 .oauth2ResourceServer(resource -> resource.jwt(
                         jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter)
                 ))
