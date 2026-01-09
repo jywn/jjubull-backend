@@ -43,6 +43,11 @@ public class AuthRateLimitInterceptor implements HandlerInterceptor {
         String ip = request.getHeader("X-Real-IP");
         String header = request.getHeader("X-Forwarded-For");
         String remoteAddr = request.getRemoteAddr();
+        log.info("host={}, scheme={}, port={}",
+                request.getHeader("Host"),
+                request.getScheme(),
+                request.getServerPort()
+        );
         log.info("real:{}, xff:{}, remote:{}", ip, header, remoteAddr);
         if (ip == null || ip.isBlank()) {
             ip = request.getRemoteAddr();
