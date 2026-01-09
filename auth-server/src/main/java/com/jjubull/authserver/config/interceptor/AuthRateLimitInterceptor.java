@@ -4,12 +4,14 @@ import com.jjubull.authserver.util.RateLimiter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.time.Duration;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class AuthRateLimitInterceptor implements HandlerInterceptor {
@@ -39,6 +41,9 @@ public class AuthRateLimitInterceptor implements HandlerInterceptor {
 
     public String clientIp(HttpServletRequest request) {
         String ip = request.getHeader("X-Real-IP");
+        String header = request.getHeader("X-Forwarded-For");
+        String remoteAddr = request.getRemoteAddr();
+        log.info("real:{}, xff:{}, remote:{}", ip, header, remoteAddr);
         if (ip == null || ip.isBlank()) {
             ip = request.getRemoteAddr();
         }
